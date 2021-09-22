@@ -1,1 +1,1 @@
-# candidate-s-score-average
+# candidates-score-average

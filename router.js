@@ -11,7 +11,7 @@ router.post('/createdata', (req, res) => {
     knex('candidate').insert(user_data)
         .then((data) => {
             console.log(data, ' crete! sucssfully...')
-            res.send({"msg":"candidate data inserted sucssfully"})
+            res.send({"message":"candidate data inserted sucssfully"})
             
         }).catch((er) => {
             console.log(er, "error");
@@ -29,7 +29,7 @@ router.post('/testscore_data', (req, res) => {
     knex('test_score').insert(user_data)
         .then((data) => {
             console.log(data, ' crete! sucssfully...')
-            res.send({"msg":"test_score data inserted sucssfully"})
+            res.send({"message":"test_score data inserted sucssfully"})
         }).catch((er) => {
             console.log(er, "error");
             res.send(er)
@@ -41,7 +41,7 @@ router.get('/getdata', (req, res) => {
     knex().select('*').from('candidate')
         .then((data) => {
             console.log('data is coming!....');
-            res.send(data)
+            res.send({"message":"get the data from candidate table sucssfully"})
         })
         .catch((err) => {
             console.log(err);
@@ -52,15 +52,15 @@ router.get('/getdata', (req, res) => {
 router.get('/getdata', (req, res) => {
     knex().select('*').from('test_score')
         .then((data) => {
-            console.log('data is coming!....');
-            res.send(data)
+            console.log();
+            res.send({"message":"get the data from test_score table sucssfully"})
         })
         .catch((err) => {
             console.log(err);
             res.send(err)
         })
 })
-// join the two tableuser_scores
+// join the two table user_scores
 router.get('/user_scores', (req, res) => {
     knex
         .select("*").from('candidate')
@@ -68,7 +68,7 @@ router.get('/user_scores', (req, res) => {
             this.on('candidate.id', 'test_score.user_id')
         })
         .then((data) => {
-            res.send(data)
+            res.send({"message":"candidate or test_score table data  has joined sucssfully"})
         // finde the average of test_score
             var total_score = []
             var first_round_sum = 0;
@@ -118,7 +118,7 @@ router.put('/updating/:id', (req, res) => {
     )
         .table('candidate').where('id', req.params.id)
         .then(() => {
-            res.send('data updating....')
+            res.send({"message":"candidate data  has updated sucssfully"})
         })
         .catch((err) => {
             res.send(err)
@@ -131,7 +131,7 @@ router.put('/updatedata/:id', (req, res) => {
     )
         .table('test_score').where('id', req.params.id)
         .then(() => {
-            res.send('data updating....')
+            res.send({"message":"test_score data has updated sucssfully"})
         })
         .catch((err) => {
             res.send(err)
@@ -142,7 +142,7 @@ router.delete('/deletingdata/:id', (req, res) => {
     knex('candidate')
         .where({ 'id': req.params.id }).del()
         .then(() => {
-            res.send('data deleted!!')
+            res.send({"message":"candidate data has deleted sucssfully"})
         })
         .catch((err) => {
             res.send(err)
@@ -153,7 +153,7 @@ router.delete('/deleting/:id', (req, res) => {
     knex('test_score')
         .where({ 'id': req.params.id }).del()
         .then(() => {
-            res.send('data sandhya!!')
+            res.send({"message":" test_score data has deleted sucssfully"})
         })
         .catch((err) => {
             res.send(err)

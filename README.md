@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Candidate Average
 A project is to creat tow table candidate or test_score in the database and find there candidate score average.
 
@@ -50,6 +49,3 @@ There are some basic installation commands are:
  - **database.js** - This is my database file. it will create table in the database and store user information.
  - **router.js** - This is my router's file. in that i have created many route's so these route will define url path,also i used CRUD operation to get data,post data,put data,delete data through the **postman**
 
-=======
-# candidates-score-average
->>>>>>> 99ad3ca004fd234c6ba0e32aff51bb6d90d8c0ce

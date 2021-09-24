@@ -10,8 +10,7 @@ router.post('/candidate-info', (req, res) => {
     }
     knex('candidate').insert(user_data)
         .then((data) => {
-            console.log(data, ' crete! sucssfully...')
-            res.send({
+                res.send({
                 "statusCode": 200,
                 "message": "candidate data inserted sucssfully"
             })

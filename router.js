@@ -31,7 +31,6 @@ router.post('/userscore-info', (req, res) => {
     }
     knex('test_score').insert(user_data)
         .then((data) => {
-            console.log(data, ' crete! sucssfully...')
             res.send({
                 "statusCode": 200,
                 "message": "test_score data inserted sucssfully"
@@ -41,11 +40,10 @@ router.post('/userscore-info', (req, res) => {
         })
     knex('users')
 })
-// getting data the from candidate table
+// Getting data the from candidate table
 router.get('/candidate-data', (req, res) => {
     knex().select('*').from('candidate')
         .then((data) => {
-            console.log(data,'data is coming!....');
             res.send({
                 "statusCode": 200,
                 "message": "get the data from candidate table sucssfully"
@@ -56,7 +54,7 @@ router.get('/candidate-data', (req, res) => {
             res.send({ "statusCode": 404 })
         })
 })
-// getting data the from test_score table
+// Getting data the from test_score table
 router.get('/score-data', (req, res) => {
     knex().select('*').from('test_score')
         .then((data) => {
@@ -78,7 +76,6 @@ router.get('/user_scores', (req, res) => {
             this.on('candidate.id', 'test_score.user_id')
         })
         .then((data) => {
-            // console.log(data)
             res.send({
                 "statusCode": 200,
                 "message": "User score data is sucssfully"

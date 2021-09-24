@@ -12,7 +12,7 @@ const knex = require('knex')({
 // candidate table
 knex.schema.hasTable("candidate").then(function (exits) {
     if (!exits) {
-        return knex.schema.createTable("candidate",function (table){
+        return knex.schema.createTable("candidate", function (table) {
             table.increments("id").primary();
             table.string("Name");
             table.string("email");
@@ -20,12 +20,10 @@ knex.schema.hasTable("candidate").then(function (exits) {
         })
 
     }
-
-
     // test_score table
     knex.schema.hasTable("test_score").then(function (exits) {
         if (!exits) {
-            return knex.schema.createTable("candidate",function (table){
+            return knex.schema.createTable("test_score", function (table) {
                 table.increments("id").primary();
                 table.integer("user_id");
                 table.integer("first_round");
@@ -35,17 +33,20 @@ knex.schema.hasTable("candidate").then(function (exits) {
             })
         }
     }).then((data) => {
-        console.log("Table test_score");
+        console.log("test_score table has created sucssfully");
+        console.log("\n")
+
     })
+        .catch((err) => {
+            console.log("test_score Table Already Exist!!");
+        });
+}).then((data) => {
+    console.log("candidate table has created sucssfully");
+
+})
     .catch((err) => {
         console.log("test_score Table Already Exist!!");
     });
-}).then((data) => {
-    console.log("Table candidate");
-})
-.catch((err) => {
-    console.log("test_score Table Already Exist!!");
-});
 
 
 
